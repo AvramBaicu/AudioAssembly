@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">TO-DO LIST</div>
+      <form method="post" action="/add">
+        <input type="text" name="data" />
+        <input type="submit" value="ADD" />
+      </form>
+      {% for element in db %}
+      <form method="post" action="{{ url_for('update', id=element.id) }}">
+        <input type="text" name="data" value="{{ element.value }}" />
+        <input type="submit" value="UPDATE" />
+      </form>
+      <form method="post" action="{{ url_for('delete', id=element.id) }}">
+        <input type="submit" value="DELETE" />
+      </form>
+      {% endfor %}
+    </div>
+  </body>
+</html>
