@@ -1,6 +1,6 @@
 from flask import render_template, request, url_for, redirect
-from MusicFriend import app, db
-from MusicFriend.models import element
+from AudioAssembly import app, db
+from AudioAssembly.models import element
 
 @app.route("/")
 def index():

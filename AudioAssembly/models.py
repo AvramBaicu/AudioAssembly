@@ -1,4 +1,4 @@
-from MusicFriend import db
+from AudioAssembly import db
 
 class element(db.Model):
     _id = db.Column(db.Integer, primary_key=True)

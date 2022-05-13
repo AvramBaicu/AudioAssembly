@@ -5,4 +5,4 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///element.sqlite"
 db = SQLAlchemy(app)
 
-import MusicFriend.routes
+import AudioAssembly.routes
