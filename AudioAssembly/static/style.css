@@ -30,9 +30,14 @@ body {
 }
 .menu li{ 
   margin: auto;
-  padding-left: 4%;
+  padding-left: 30%;
   text-align: center;
   display: inline-block;
   align-items: right;
 }
 
+
+.title_of_page{
+  padding: 5%;
+  text-align: center;
+}
