@@ -1,11 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital@1&family=Roboto+Flex:opsz,wght@8..144,600&display=swap');
+
 body {
   margin: 0;
+  font-family: 'Mulish', sans-serif;
 }
 
 .container {
   min-height: 100vh;
-  display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: #778da9;
+  background-color: #ffffff;
+  display: block;
 }
+
+.header{
+  color: 	rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  font-size: 20px;
+  padding: .4%;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  align-items: center;
+  
+  
+}
+
+.Name_of_Website{
+  padding-left: 3%;
+  color: rgb(255, 255, 255);
+}
+.menu li{ 
+  margin: auto;
+  padding-left: 4%;
+  text-align: center;
+  display: inline-block;
+  align-items: right;
+}
+
