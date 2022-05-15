@@ -72,12 +72,11 @@ def interpret_data(data):
         language="German"
     elif language=="it":
         language="Italian"
-    keywords=None
+    keywords=[]
     if data["auto_highlights_result"]:
         keywords=data["auto_highlights_result"]["results"]
-    tone=None
+    tone={"POSITIVE": 0, "NEGATIVE": 0, "NEUTRAL": 0}
     if data["sentiment_analysis_results"]:
-        tone={"POSITIVE": 0, "NEGATIVE": 0, "NEUTRAL": 0}
         for result in data["sentiment_analysis_results"]:
             tone[result["sentiment"]]+=1
         tone["POSITIVE"] = str((tone["POSITIVE"]/len(data["sentiment_analysis_results"]))*100)+"%"
