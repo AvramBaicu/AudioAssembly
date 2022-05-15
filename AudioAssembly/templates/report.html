@@ -57,10 +57,18 @@
         <p class="stuff_inside"> The audio could be <span style="color: #38ea7a">{{ data['content_safety'] }}</span> triggering to some.</p>
 
         <div class="genres">Tone</div>
-        <p class="stuff_inside"> The tone was <span style="color: #38ea7a">{{ data['tone'] }}</span>.</p>
+        <p class="stuff_inside"> The tone was <span style="color: #38ea7a">{{ data['tone']['POSITIVE'] }}</span> positive,
+           <span style="color: #38ea7a">{{ data['tone']['NEGATIVE'] }}</span> negative, and <span style="color: #38ea7a">{{ data['tone']['NEUTRAL'] }}</span> neutral.</p>
 
         <div class="genres">Important Entities</div>
-        <p class="stuff_inside"> The common words/theme of the audio revolved around <span style="color: #38ea7a">{{ data['important_entities'] }}</span>.</p>
+        <p class="stuff_inside"> The common words/theme of the audio revolved around <span style="color: #38ea7a">
+        
+          {%- for entity in data['important_entities'] -%}
+          the {{ entity["entity_type"] }} {{ entity["text"] }}
+          {%- if not loop.last -%}
+           ,
+          {% endif %}
+      {%- endfor -%}</span>.</p>
 
       </div>  
   
