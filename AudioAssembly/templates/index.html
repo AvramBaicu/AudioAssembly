@@ -10,42 +10,62 @@
       type="text/css"
       href="{{ url_for('static',filename='style.css') }}"
     />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="{{ url_for('static',filename='AudioAssembly.png') }}"
+    />
   </head>
 
   <body>
     <header class="header">
-      <p class="Name_of_Website"> <span style="color: #38ea7a ">Audio</span> Assembly</p>
+      <p class="Name_of_Website">
+        <span style="color: #38ea7a">Audio</span> Assembly
+      </p>
       <nav class="menu">
         <li>Home</li>
       </nav>
     </header>
 
+    <h3 class="title_of_page">
+      Verify your file with <span style="color: #38ea7a">Audio</span> Assembly
+      before uploading.
+    </h3>
 
-
-
-
-    <h3 class="title_of_page">Verify your file with <span style="color: #38ea7a">Audio</span> Assembly before uploading.</h3>
-
-    <p class="intro_paragraph">Our platform enables you to check to see if your video/audio file has content that could be deemed inappropriate. 
-      Check for swearwords, hate speech, and if your word choice could be considered negative. Whether you upload your content on YouTube,
-       Spotify, school, or more, you could upload without having to suffer the consequences of your mistakes. </p>
-     <p class="action_paragraph">Get your report now!</p>
+    <p class="intro_paragraph">
+      Our platform enables you to check to see if your video/audio file has
+      content that could be deemed inappropriate. Check for swearwords, hate
+      speech, and if your word choice could be considered negative. Whether you
+      upload your content on YouTube, Spotify, school, or more, you could upload
+      without having to suffer the consequences of your mistakes.
+    </p>
+    <p class="action_paragraph">Get your report now!</p>
 
     <div class="upload">
-
-        <form action="/report.html">
-          <input type="file" id="myFile" name="filename">
-        </form>
-
-        <button class="check_results_button" > <i>Check Results</i> </button>
-
+      <form method="post" action="/report" enctype="multipart/form-data">
+        <input type="file" name="data" />
+        <input
+          class="check_results_button"
+          type="submit"
+          value="Check Results"
+        />
+      </form>
     </div>
-
   </body>
-  <footer >
-    <hr color="gold">
-    <p class="footer_paragraph">All rights reserved.  <span style="color: #ff0000">Audio</span>  <span style="color: white">Assembly</span>, the <span style="color: #ff0000">Audio</span>  <span style="color: white">Assembly</span> logo, and the tag design are trademarks of <span style="color: #ff0000">Audio</span>  <span style="color: white">Assembly</span> and its affiliated organizations.</p>
-    <p class="footer_all_rights">Copyright © 2021 <span style="color: #ff0000">Audio</span>  <span style="color: white">Assembly</span></p>
-
+  <footer>
+    <hr color="gold" />
+    <p class="footer_paragraph">
+      All rights reserved. <span style="color: #ff0000">Audio</span>
+      <span style="color: white">Assembly</span>, the
+      <span style="color: #ff0000">Audio</span>
+      <span style="color: white">Assembly</span> logo, and the tag design are
+      trademarks of <span style="color: #ff0000">Audio</span>
+      <span style="color: white">Assembly</span> and its affiliated
+      organizations.
+    </p>
+    <p class="footer_all_rights">
+      Copyright © 2021 <span style="color: #ff0000">Audio</span>
+      <span style="color: white">Assembly</span>
+    </p>
   </footer>
 </html>
