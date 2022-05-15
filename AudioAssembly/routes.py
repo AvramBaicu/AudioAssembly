@@ -12,14 +12,4 @@ def report():
     if upload_url:
         return render_template('report.html', data=interpret_data(get_transcript(generate_transcript(upload_url))))
     else:
-        return render_template('report.html', data = {
-        "confidence": "92%",
-        "speakers": 1,
-        "disfluencies_count": 1,
-        "language": "English",
-        "profanity": 1,
-        "keywords": ["a", "b", "c"],
-        "content_safety": "13%",
-        "tone": {"POSITIVE": "20%", "NEGATIVE": "20%", "NEUTRAL": "20%"},
-        "important_entities": [{"entity_type": "event", "text": "materialgirl"}, {"entity_type": "event", "text": "materialgirl"}]
-    })
+        return render_template('report.html', data="")
