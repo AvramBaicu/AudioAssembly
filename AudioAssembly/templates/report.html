@@ -19,6 +19,14 @@
 
   <body>
     <h1>Report</h1>
-    <div>{{text}}</div>
+    <div>confidence {{ data['confidence'] }}</div>
+    <div>speakers {{ data['speakers'] }}</div>
+    <div>disfluencies {{ data['disfluencies_count'] }}</div>
+    <div>language {{ data['language'] }}</div>
+    <div>profanity {{ data['profanity'] }}</div>
+    <div>keywords {{ data['keywords'] }}</div>
+    <div>content_safety {{ data['content_safety'] }}</div>
+    <div>tone {{ data['tone'] }}</div>
+    <div>important_entities {{ data['important_entities'] }}</div>
   </body>
 </html>

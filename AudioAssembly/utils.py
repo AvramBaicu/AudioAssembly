@@ -1,5 +1,6 @@
-from flask import request, render_template
-import requests, os
+import requests, os, re
+
+disfluencies=re.compile("^(um+|uh+|hm+|mhm+|uh\shuh)$")
 
 # helper function retrieved from AssemblyAI API
 def read_file(file, chunk_size=5242880):
@@ -47,3 +48,60 @@ def get_transcript(id):
     while response.json()["status"] != "completed":
         response = requests.get(endpoint, headers=headers)
     return response.json()
+
+def interpret_data(data):
+    confidence=str(data['confidence']*100)+"%"
+    speakers=1
+    disfluencies_count=0
+    profanity=0
+    for word in data["words"]:
+        if word["speaker"] and ord(word["speaker"])-64 > speakers:
+            speakers=ord(word["speaker"])-64
+        if disfluencies.match(word["text"].replace(",", "").replace(".", "").replace(";", "").lower()):
+            disfluencies_count+=1
+        if "*" in word["text"]:
+            profanity+=1
+    language=data["language_code"]
+    if "en" in language:
+        language="English"
+    elif language=="es":
+        language="Spanish"
+    elif language=="fr":
+        language="French"
+    elif language=="de":
+        language="German"
+    elif language=="it":
+        language="Italian"
+    keywords=None
+    if data["auto_highlights_result"]:
+        keywords=data["auto_highlights_result"]["results"]
+    tone=None
+    if data["sentiment_analysis_results"]:
+        tone={"POSITIVE": 0, "NEGATIVE": 0, "NEUTRAL": 0}
+        for result in data["sentiment_analysis_results"]:
+            tone[result["sentiment"]]+=1
+        tone["POSITIVE"] = str((tone["POSITIVE"]/len(data["sentiment_analysis_results"]))*100)+"%"
+        tone["NEGATIVE"] = str((tone["NEGATIVE"]/len(data["sentiment_analysis_results"]))*100)+"%"
+        tone["NEUTRAL"] = str((tone["NEUTRAL"]/len(data["sentiment_analysis_results"]))*100)+"%"
+    important_entities=data["entities"]
+    content_safety=0
+    content_safety_total=0
+    if data["content_safety_labels"]:
+            for result in data["content_safety_labels"]["results"]:
+                for label in result["labels"]:
+                    if label["severity"]:
+                        content_safety+=(label["severity"]*100)
+                        content_safety_total+=1
+            if content_safety_total > 0:
+                content_safety=str((content_safety/content_safety_total)*100)+"%"
+    return {
+        "confidence": confidence, # this returns a percentage
+        "speakers": speakers, # this returns the number of speakers
+        "disfluencies_count": disfluencies_count, # this returns the number of "ums"
+        "language": language, # this returns the language
+        "profanity": profanity, # this returns the number of swear words
+        "keywords": keywords, # this returns an array of key words
+        "content_safety": content_safety, # this returns a percentage
+        "tone": tone, # this returns a string (e.g. POSITIVE)
+        "important_entities": important_entities # this returns an array of important bodies
+    }
