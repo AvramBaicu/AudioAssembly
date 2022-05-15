@@ -10,62 +10,68 @@
       type="text/css"
       href="{{ url_for('static',filename='style.css') }}"
     />
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="{{ url_for('static',filename='AudioAssembly.png') }}"
-    />
   </head>
 
   <body>
     <header class="header">
-      <p class="Name_of_Website">
-        <span style="color: #38ea7a">Audio</span> Assembly
-      </p>
+      <p></p>
       <nav class="menu">
         <li>Home</li>
       </nav>
     </header>
 
-    <h3 class="title_of_page">
-      Verify your file with <span style="color: #38ea7a">Audio</span> Assembly
-      before uploading.
-    </h3>
+    <div class="main_info">
+      <div class="one">
+        <p class="Name_of_Website">
+          <span style="color: #38ea7a">Audio</span> Assembly
+        </p>
+        <h3 class="title_of_page">
+          Verify your file with <span style="color: #38ea7a">Audio</span>
+          <span style="color: white">Assembly</span> before uploading.
+        </h3>
+      </div>
 
-    <p class="intro_paragraph">
-      Our platform enables you to check to see if your video/audio file has
-      content that could be deemed inappropriate. Check for swearwords, hate
-      speech, and if your word choice could be considered negative. Whether you
-      upload your content on YouTube, Spotify, school, or more, you could upload
-      without having to suffer the consequences of your mistakes.
-    </p>
-    <p class="action_paragraph">Get your report now!</p>
-
-    <div class="upload">
-      <form method="post" action="/report" enctype="multipart/form-data">
-        <input type="file" name="data" />
-        <input
-          class="check_results_button"
-          type="submit"
-          value="Check Results"
-        />
-      </form>
+      <div class="upload-btn-wrapper">
+        <form
+          class="form"
+          method="post"
+          action="/report"
+          enctype="multipart/form-data"
+        >
+          <label for="form_input" class="form_label">
+            <input
+              type="file"
+              name="data"
+              id="form_input"
+              class="form_input"
+              accept="Audio/video/*"
+            />
+            <span class="form_text"
+              ><img
+                class="form_icon"
+                src="{{ url_for('static',filename='Pngtreeupload_vector_icon_with_white_5168883-removebg-preview.png') }}"
+                alt=""
+              />Upload a file.</span
+            ><input type="submit" />
+          </label>
+        </form>
+      </div>
     </div>
   </body>
   <footer>
-    <hr color="gold" />
+    <hr color="gray" />
+    <p class="footer_all_rights">
+      Copyright © 2022 <span style="color: #38ea7a">Audio</span>
+      <span style="color: white">Assembly</span>
+    </p>
     <p class="footer_paragraph">
-      All rights reserved. <span style="color: #ff0000">Audio</span>
+      All rights reserved. <span style="color: #38ea7a">Audio</span>
       <span style="color: white">Assembly</span>, the
-      <span style="color: #ff0000">Audio</span>
+      <span style="color: #38ea7a">Audio</span>
       <span style="color: white">Assembly</span> logo, and the tag design are
-      trademarks of <span style="color: #ff0000">Audio</span>
+      trademarks of <span style="color: #38ea7a">Audio</span>
       <span style="color: white">Assembly</span> and its affiliated
       organizations.
-    </p>
-    <p class="footer_all_rights">
-      Copyright © 2021 <span style="color: #ff0000">Audio</span>
-      <span style="color: white">Assembly</span>
     </p>
   </footer>
 </html>
