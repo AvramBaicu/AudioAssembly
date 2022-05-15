@@ -1,19 +1,15 @@
-from flask import render_template, request, url_for, redirect
-from AudioAssembly import app, db
-from AudioAssembly.models import element
+from flask import render_template, request
+from AudioAssembly import app
+from AudioAssembly.utils import upload_file, generate_transcript, get_transcript
 
 @app.route("/")
 def index():
-    return render_template('index.html', db=[])
+    return render_template('index.html')
 
-@app.route("/add", methods=["POST"])
-def add():
-    return redirect(url_for('index'))
-
-@app.route("/update/<id>", methods=["POST"])
-def update(id):
-    return redirect(url_for('index'))
-
-@app.route("/delete/<id>", methods=["POST"])
-def delete(id):
-    return redirect(url_for('index'))
+@app.route("/report", methods=["POST"])
+def report():
+    upload_url = upload_file(request.files["data"])
+    if upload_url:
+        return render_template('report.html', text=get_transcript(generate_transcript(upload_url)))
+    else:
+        return render_template('report.html', text="")
