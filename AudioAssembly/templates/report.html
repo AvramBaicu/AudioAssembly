@@ -18,15 +18,77 @@
   </head>
 
   <body>
-    <h1>Report</h1>
-    <div>confidence {{ data['confidence'] }}</div>
-    <div>speakers {{ data['speakers'] }}</div>
-    <div>disfluencies {{ data['disfluencies_count'] }}</div>
-    <div>language {{ data['language'] }}</div>
-    <div>profanity {{ data['profanity'] }}</div>
-    <div>keywords {{ data['keywords'] }}</div>
-    <div>content_safety {{ data['content_safety'] }}</div>
-    <div>tone {{ data['tone'] }}</div>
-    <div>important_entities {{ data['important_entities'] }}</div>
-  </body>
+    <header class="header">
+      <p class="Name_of_Website2"><span style="color: #38ea7a">Audio</span> Assembly</p>
+      <nav class="menu">
+        <li>Home</li>
+      </nav>
+    </header>
+
+   <h1 class="report">REPORT</h1>
+
+      <div class="main_report">
+     
+        <div class="genres">Confidence</div>
+        <p class="stuff_inside">Your confidence score is  <span style="color: #38ea7a">{{ data['confidence'] }}.</span></p>
+        
+        <div class="genres">Speakers</div>
+        <p class="stuff_inside"><span style="color: #38ea7a"> {{ data['speakers'] }}</span> speaker(s) were found.</p>
+        
+        <div class="genres">Disfluencies</div>
+        <p class="stuff_inside">There were <span style="color: #38ea7a">{{ data['disfluencies_count'] }}</span> disfluencie(s). (uhm/uhh's)</p>
+        
+        <div class="genres">Language</div>
+        <p class="stuff_inside">The language detected was <span style="color: #38ea7a"> {{ data['language'] }}.</span></p>
+
+        <div class="genres">Profanity</div>
+        <p class="stuff_inside"><span style="color: #38ea7a">{{ data['profanity'] }}</span> swear word(s) were discovered in your speech.</p>
+
+        <div class="genres">Keywords</div>
+        <p class="stuff_inside">The keywords noted were: <span style="color: #38ea7a">
+          {%- for key in data['keywords'] -%}
+          {{ key }}
+    {%- if not loop.last -%}
+     ,
+    {% endif %}
+{%- endfor -%}</span>.</p>
+
+        <div class="genres">Content Safety</div>
+        <p class="stuff_inside"> The audio could be <span style="color: #38ea7a">{{ data['content_safety'] }}</span> triggering to some.</p>
+
+        <div class="genres">Tone</div>
+        <p class="stuff_inside"> The tone was <span style="color: #38ea7a">{{ data['tone']['POSITIVE'] }}</span> positive,
+           <span style="color: #38ea7a">{{ data['tone']['NEGATIVE'] }}</span> negative, and <span style="color: #38ea7a">{{ data['tone']['NEUTRAL'] }}</span> neutral.</p>
+
+        <div class="genres">Important Entities</div>
+        <p class="stuff_inside"> The common words/theme of the audio revolved around <span style="color: #38ea7a">
+        
+          {%- for entity in data['important_entities'] -%}
+          the {{ entity["entity_type"] }} {{ entity["text"] }}
+          {%- if not loop.last -%}
+           ,
+          {% endif %}
+      {%- endfor -%}</span>.</p>
+
+      </div>  
+  
+      </body>
+
+ 
+<footer>
+  <hr color="gray" />
+  <p class="footer_all_rights">
+    Copyright © 2022 <span style="color: #38ea7a">Audio</span>
+    <span style="color: white">Assembly</span>
+  </p>
+  <p class="footer_paragraph">
+    All rights reserved. <span style="color: #38ea7a">Audio</span>
+    <span style="color: white">Assembly</span>, the
+    <span style="color: #38ea7a">Audio</span>
+    <span style="color: white">Assembly</span> logo, and the tag design are
+    trademarks of <span style="color: #38ea7a">Audio</span>
+    <span style="color: white">Assembly</span> and its affiliated
+    organizations.
+  </p>
+</footer>
 </html>
