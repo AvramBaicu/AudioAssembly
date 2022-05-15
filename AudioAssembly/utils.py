@@ -90,7 +90,7 @@ def interpret_data(data):
             for result in data["content_safety_labels"]["results"]:
                 for label in result["labels"]:
                     if label["severity"]:
-                        content_safety+=(label["severity"]*100)
+                        content_safety+=label["severity"]
                         content_safety_total+=1
             if content_safety_total > 0:
                 content_safety=str((content_safety/content_safety_total)*100)+"%"
