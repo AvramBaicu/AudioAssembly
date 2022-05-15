@@ -33,7 +33,7 @@ To set up the application, run the following three commands:
 ```
 set FLASK_APP=AudioAssembly
 set FLASK_ENV=development
-set AAI_API_KEY=b64e2992b9364c3ab89ffeeca267438e
+set AAI_API_KEY=<your assemblyai api key>
 ```
 
 #### Running The Application
