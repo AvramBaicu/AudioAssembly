@@ -8,7 +8,11 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="{{ url_for('static',filename='style.css') }}"
+      href="{{ url_for('static',filename='index.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link
       rel="shortcut icon"
@@ -18,65 +22,23 @@
   </head>
 
   <body>
-    <header class="header">
-      <p></p>
-      <nav class="menu">
-        <li>Home</li>
-      </nav>
-    </header>
-
-    <div class="main_info">
-      <div class="one">
-        <p class="Name_of_Website">
-          <span style="color: #38ea7a">Audio</span> Assembly
-        </p>
-        <h3 class="title_of_page">
-          Verify your file with <span style="color: #38ea7a">Audio</span>
-          <span style="color: white">Assembly</span> before uploading.
-        </h3>
+    <div class="main">
+      <div class="title left">AUDIOASSEMBLY</div>
+      <div class="subtitle left">
+        Upload an audio/video file to receive a detailed report.
       </div>
-
-      <div class="upload-btn-wrapper">
-        <form
-          class="form"
-          method="post"
-          action="/report"
-          enctype="multipart/form-data"
-        >
-          <label for="form_input" class="form_label">
-            <input
-              type="file"
-              name="data"
-              id="form_input"
-              class="form_input"
-              accept="Audio/video/*"
-            />
-            <span class="form_text"
-              ><img
-                class="form_icon"
-                src="{{ url_for('static',filename='upload.png') }}"
-                alt=""
-              />Upload a file.</span
-            ><input type="submit" />
-          </label>
-        </form>
-      </div>
+      <form
+        class="form left"
+        method="post"
+        action="/report"
+        enctype="multipart/form-data"
+      >
+        <label class="upload-container" for="file">
+          <i class="fa fa-angle-up fa-5x" aria-hidden="true"></i
+          ><input class="upload" type="file" name="data" id="file"
+        /></label>
+        <input class="submit" type="submit" value="→" />
+      </form>
     </div>
   </body>
-  <footer>
-    <hr color="gray" />
-    <p class="footer_all_rights">
-      Copyright © 2022 <span style="color: #38ea7a">Audio</span>
-      <span style="color: white">Assembly</span>
-    </p>
-    <p class="footer_paragraph">
-      All rights reserved. <span style="color: #38ea7a">Audio</span>
-      <span style="color: white">Assembly</span>, the
-      <span style="color: #38ea7a">Audio</span>
-      <span style="color: white">Assembly</span> logo, and the tag design are
-      trademarks of <span style="color: #38ea7a">Audio</span>
-      <span style="color: white">Assembly</span> and its affiliated
-      organizations.
-    </p>
-  </footer>
 </html>
