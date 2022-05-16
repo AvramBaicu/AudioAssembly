@@ -20,8 +20,12 @@ body {
 }
 
 .title {
+  overflow: hidden;
+  border-right: 0.15em solid white;
   font-size: 150px;
+  width: 1175px;
   font-weight: bolder;
+  animation: typing 2.5s steps(30, end), blink-caret 0.7s step-end infinite;
 }
 
 .subtitle {
@@ -85,15 +89,45 @@ body {
   color: rgb(160, 102, 215);
 }
 
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 1175px;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
+}
+
 @media only screen and (max-width: 1270px) {
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 377px;
+    }
+  }
+
   .main {
     align-items: center;
     justify-content: flex-start;
   }
 
   .title {
-    padding-top: 30px;
+    border-right: 0.15em solid white;
+    margin-top: 30px;
     font-size: 48px;
+    width: 377px;
   }
 
   .subtitle {
