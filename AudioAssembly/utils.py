@@ -84,9 +84,10 @@ def interpret_data(data):
         tone["NEGATIVE"] = str((tone["NEGATIVE"]/len(data["sentiment_analysis_results"]))*100)+"%"
         tone["NEUTRAL"] = str((tone["NEUTRAL"]/len(data["sentiment_analysis_results"]))*100)+"%"
     important_entities=data["entities"] if data["entities"] else []
-    content_safety=0
+    content_safety="0%"
     content_safety_total=0
     if data["content_safety_labels"]:
+            content_safety=0
             for result in data["content_safety_labels"]["results"]:
                 for label in result["labels"]:
                     if label["severity"]:
