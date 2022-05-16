@@ -99,9 +99,11 @@
         <div class="text">
           The common words/theme of the audio revolved around
           <span style="color: rgb(160, 102, 215)">
-            {%- for entity in data['important_entities'] -%} {% if loop.last %}
-            and {% endif %} the {{ entity["entity_type"] }} {{ entity["text"] }}
-            {%- if not loop.last -%} , {% endif %} {%- endfor -%} </span
+            {% if data['important_entities'] != [] %} {%- for entity in
+            data['important_entities'] -%} {% if loop.last %} and {% endif %}
+            the {{ entity["entity_type"] }} {{ entity["text"] }} {%- if not
+            loop.last -%} , {% endif %} {%- endfor -%}{% else %}nothing{% endif
+            -%} </span
           >.
         </div>
       </div>
