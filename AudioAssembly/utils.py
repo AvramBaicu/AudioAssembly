@@ -84,10 +84,9 @@ def interpret_data(data):
         tone["NEGATIVE"] = str((tone["NEGATIVE"]/len(data["sentiment_analysis_results"]))*100)+"%"
         tone["NEUTRAL"] = str((tone["NEUTRAL"]/len(data["sentiment_analysis_results"]))*100)+"%"
     important_entities=data["entities"] if data["entities"] else []
-    content_safety="0%"
+    content_safety=0
     content_safety_total=0
     if data["content_safety_labels"]:
-            content_safety=0
             for result in data["content_safety_labels"]["results"]:
                 for label in result["labels"]:
                     if label["severity"]:
@@ -102,7 +101,7 @@ def interpret_data(data):
         "language": language, # this returns the language
         "profanity": profanity, # this returns the number of swear words
         "keywords": keywords, # this returns an array of key words
-        "content_safety": content_safety, # this returns a percentage
+        "content_safety": content_safety if content_safety != 0 else "0%", # this returns a percentage
         "tone": tone, # this returns a string (e.g. POSITIVE)
         "important_entities": important_entities # this returns an array of important bodies
     }
