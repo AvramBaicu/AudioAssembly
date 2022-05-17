@@ -50,7 +50,7 @@ def get_transcript(id):
     return response.json()
 
 def interpret_data(data):
-    confidence=str(data['confidence']*100)+"%"
+    confidence=str(round(data['confidence']*100))+"%"
     speakers=1
     disfluencies_count=0
     profanity=0
@@ -80,9 +80,9 @@ def interpret_data(data):
         tone={"POSITIVE": 0, "NEGATIVE": 0, "NEUTRAL": 0}
         for result in data["sentiment_analysis_results"]:
             tone[result["sentiment"]]+=1
-        tone["POSITIVE"] = str((tone["POSITIVE"]/len(data["sentiment_analysis_results"]))*100)+"%"
-        tone["NEGATIVE"] = str((tone["NEGATIVE"]/len(data["sentiment_analysis_results"]))*100)+"%"
-        tone["NEUTRAL"] = str((tone["NEUTRAL"]/len(data["sentiment_analysis_results"]))*100)+"%"
+        tone["POSITIVE"] = str(round((tone["POSITIVE"]/len(data["sentiment_analysis_results"]))*100))+"%"
+        tone["NEGATIVE"] = str(round((tone["NEGATIVE"]/len(data["sentiment_analysis_results"]))*100))+"%"
+        tone["NEUTRAL"] = str(round((tone["NEUTRAL"]/len(data["sentiment_analysis_results"]))*100))+"%"
     important_entities=data["entities"] if data["entities"] else []
     content_safety=0
     content_safety_total=0
@@ -93,7 +93,7 @@ def interpret_data(data):
                     content_safety+=label["severity"]
                     content_safety_total+=1
         if content_safety_total > 0:
-            content_safety=str((content_safety/content_safety_total)*100)+"%"
+            content_safety=str(round((content_safety/content_safety_total)*100))+"%"
     return {
         "confidence": confidence, # this returns a percentage
         "speakers": speakers, # this returns the number of speakers
