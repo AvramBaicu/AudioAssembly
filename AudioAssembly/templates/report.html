@@ -21,97 +21,80 @@
     <div class="main">
       <div class="title">REPORT</div>
       <div class="container">
-        <div class="subtitle">TRANSCRIPT</div>
-        <div class="text">
-          <span style="color: rgb(160, 102, 215)"> {{data['text']}} </span>
-        </div>
-      </div>
-      <div class="container">
-        <div class="subtitle">CONFIDENCE</div>
-        <div class="text">
-          Your confidence score is
-          <span style="color: rgb(160, 102, 215)">{{data['confidence']}}</span>.
-        </div>
-      </div>
-      <div class="container">
-        <div class="subtitle">SPEAKERS</div>
-        <div class="text">
-          <span style="color: rgb(160, 102, 215)">{{data['speakers']}}</span>
-          speaker(s) were found.
-        </div>
-      </div>
-      <div class="container">
-        <div class="subtitle">DISFLUENCIES</div>
-        <div class="text">
-          There were
-          <span style="color: rgb(160, 102, 215)">
-            {{data['disfluencies_count']}} </span
-          >disfluencie(s). (uhm/uhh's)
-        </div>
-      </div>
-      <div class="container">
-        <div class="subtitle">LANGUAGE</div>
-        <div class="text">
-          The language detected was
-          <span style="color: rgb(160, 102, 215)">{{data['language']}}</span>.
-        </div>
-      </div>
-      <div class="container">
-        <div class="subtitle">PROFANITY</div>
-        <div class="text">
-          <span style="color: rgb(160, 102, 215)">{{data['profanity']}}</span>
-          swear word(s) were discovered in your speech.
-        </div>
-      </div>
-      <div class="container">
-        <div class="subtitle">KEYWORDS</div>
-        <div class="text">
-          The keywords noted were:
-          <span style="color: rgb(160, 102, 215)">
-            {%- for key in data['keywords'] -%} {{ key['text'] }} {%- if not
-            loop.last -%} , {% endif %} {%- endfor -%} </span
-          >.
-        </div>
-      </div>
-      <div class="container">
-        <div class="subtitle">CONTENT SAFETY</div>
-        <div class="text">
-          The audio could be
-          <span style="color: rgb(160, 102, 215)">
-            {{data['content_safety']}} </span
-          >triggering to some.
+        <div class="subtitle">METRICS</div>
+        <div class="metrics">
+          <div>
+            <div class="data">{{data['confidence']}}</div>
+            <div class="label">CONFIDENT</div>
+          </div>
+          <div>
+            <div class="data">{{data['speakers']}}</div>
+            <div class="label">SPEAKER(S)</div>
+          </div>
+          <div>
+            <div class="data">{{data['disfluencies_count']}}</div>
+            <div class="label">DISFLUENCIE(S)</div>
+          </div>
+          <div>
+            <div class="data">{{data['language']}}</div>
+            <div class="label">LANGUAGE</div>
+          </div>
+          <div>
+            <div class="data">{{data['profanity']}}</div>
+            <div class="label">SWEAR WORD(S)</div>
+          </div>
+          <div>
+            <div class="data">{{data['content_safety']}}</div>
+            <div class="label">TRIGGERING</div>
+          </div>
         </div>
       </div>
       <div class="container">
         <div class="subtitle">TONE</div>
-        <div class="text">
-          The tone was
-          <span style="color: rgb(160, 102, 215)">
-            {{ data['tone']['POSITIVE'] }}</span
-          >
-          positive,
-          <span style="color: rgb(160, 102, 215)"
-            >{{ data['tone']['NEGATIVE'] }}</span
-          >
-          negative, and
-          <span style="color: rgb(160, 102, 215)"
-            >{{ data['tone']['NEUTRAL'] }}</span
-          >
-          neutral.
+        <div class="metrics">
+          <div>
+            <div class="data">{{data['tone']['POSITIVE']}}</div>
+            <div class="label">POSITIVE</div>
+          </div>
+          <div>
+            <div class="data">{{data['tone']['NEGATIVE']}}</div>
+            <div class="label">NEGATIVE</div>
+          </div>
+          <div class="neutral">
+            <div class="data">{{data['tone']['NEUTRAL']}}</div>
+            <div class="label">NEUTRAL</div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="subtitle">KEYWORDS</div>
+        <div class="list">
+          {%- for key in data['keywords'] -%}
+          <div class="element">
+            <span style="color: blueviolet; font-weight: normal">•</span> {{
+            key['text'] }}
+          </div>
+          {%- if not loop.last -%} {% endif %} {%- endfor -%}
         </div>
       </div>
       <div class="container">
         <div class="subtitle">IMPORTANT ENTITIES</div>
-        <div class="text">
-          The common words/theme of the audio revolved around
-          <span style="color: rgb(160, 102, 215)">
-            {% if data['important_entities'] != [] %} {%- for entity in
-            data['important_entities'] -%} {% if loop.last and
-            data['important_entities']|length > 1 %} and {% endif %} the {{
-            entity["entity_type"] }} {{ entity["text"] }} {%- if not loop.last
-            -%} , {% endif %} {%- endfor -%}{% else %}nothing{% endif -%} </span
-          >.
+        <div class="metric-container">
+          {% if data['important_entities'] != [] %} {%- for entity in
+          data['important_entities'] -%}
+          <div class="metric-subcontainer">
+            <div class="metric">•</div>
+            <div class="metric">
+              <div class="data">{{ entity["text"] }}</div>
+              <div class="label">{{ entity["entity_type"] }}</div>
+            </div>
+          </div>
+          {%- endfor -%} {% endif -%}
         </div>
+      </div>
+      <div class="container">
+        <div class="subtitle">TRANSCRIPT</div>
+        <div class="text">{{data['text']}}</div>
       </div>
     </div>
   </body>
