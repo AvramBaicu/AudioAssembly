@@ -95,6 +95,7 @@ body {
 
 .label {
   font-size: 22px;
+  text-transform: uppercase;
 }
 
 @media only screen and (max-width: 1270px) {
@@ -123,11 +124,14 @@ body {
 
   .label {
     font-size: 16px;
-    text-transform: uppercase;
+  }
+
+  .element {
+    margin-left: 0;
+    text-align: start;
   }
 
   .list,
-  .element,
   .metrics,
   .text,
   .metric-subcontainer {
