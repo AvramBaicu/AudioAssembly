@@ -68,11 +68,11 @@
       </div>
       <div class="container">
         <div class="subtitle">KEYWORDS</div>
-        <div class="list">
+        <div class="metric-container">
           {%- for key in data['keywords'] -%}
-          <div class="element">
-            <span style="color: blueviolet; font-weight: normal">•</span> {{
-            key['text'] }}
+          <div class="metric-subcontainer">
+            <div class="metric">•</div>
+            <div class="metric"><div class="data">{{ key['text'] }}</div></div>
           </div>
           {%- if not loop.last -%} {% endif %} {%- endfor -%}
         </div>
@@ -86,7 +86,9 @@
             <div class="metric">•</div>
             <div class="metric">
               <div class="data">{{ entity["text"] }}</div>
-              <div class="label">{{ entity["entity_type"] }}</div>
+              <div class="label">
+                {{ entity["entity_type"]|replace("_", " ") }}
+              </div>
             </div>
           </div>
           {%- endfor -%} {% endif -%}
