@@ -103,5 +103,6 @@ def interpret_data(data):
         "keywords": keywords, # this returns an array of key words
         "content_safety": content_safety if content_safety != 0 else "0%", # this returns a percentage
         "tone": tone, # this returns a string (e.g. POSITIVE)
-        "important_entities": important_entities # this returns an array of important bodies
+        "important_entities": important_entities, # this returns an array of important bodies
+        "text": data['text']
     }

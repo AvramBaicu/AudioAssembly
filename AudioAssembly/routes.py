@@ -21,5 +21,6 @@ def report():
             "keywords": [{"text": "a"}, {"text": "a"}, {"text": "a"}], 
             "content_safety": "10%", 
             "tone": {"POSITIVE": "33.33%", "NEGATIVE": "33.33%", "NEUTRAL": "33.33%"}, 
-            "important_entities": [{"entity_type": "event", "text": "super"}] 
+            "important_entities": [{"entity_type": "event", "text": "super"}],
+            "text": "hello."
         })
