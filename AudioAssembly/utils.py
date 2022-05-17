@@ -87,13 +87,13 @@ def interpret_data(data):
     content_safety=0
     content_safety_total=0
     if data["content_safety_labels"]:
-            for result in data["content_safety_labels"]["results"]:
-                for label in result["labels"]:
-                    if label["severity"]:
-                        content_safety+=label["severity"]
-                        content_safety_total+=1
-            if content_safety_total > 0:
-                content_safety=str((content_safety/content_safety_total)*100)+"%"
+        for result in data["content_safety_labels"]["results"]:
+            for label in result["labels"]:
+                if label["severity"]:
+                    content_safety+=label["severity"]
+                    content_safety_total+=1
+        if content_safety_total > 0:
+            content_safety=str((content_safety/content_safety_total)*100)+"%"
     return {
         "confidence": confidence, # this returns a percentage
         "speakers": speakers, # this returns the number of speakers
