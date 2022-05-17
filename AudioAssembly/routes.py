@@ -18,7 +18,7 @@ def report():
             "disfluencies_count": 0, 
             "language": "English", 
             "profanity": 0, 
-            "keywords": [{"text": "a"}, {"text": "a"}, {"text": "a"}], 
+            "keywords": [{"text": "fewfewf ewfewfew"}, {"text": "fewfewffew ewf"}, {"text": "fewfewf"}], 
             "content_safety": "10%", 
             "tone": {"POSITIVE": "33%", "NEGATIVE": "33%", "NEUTRAL": "33%"}, 
             "important_entities": [{"entity_type": "event", "text": "Super"}, {"entity_type": "event", "text": "Super"}],
