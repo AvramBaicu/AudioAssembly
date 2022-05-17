@@ -20,7 +20,7 @@ def report():
             "profanity": 0, 
             "keywords": [{"text": "a"}, {"text": "a"}, {"text": "a"}], 
             "content_safety": "10%", 
-            "tone": {"POSITIVE": "33.33%", "NEGATIVE": "33.33%", "NEUTRAL": "33.33%"}, 
-            "important_entities": [{"entity_type": "event", "text": "super"}],
+            "tone": {"POSITIVE": "33%", "NEGATIVE": "33%", "NEUTRAL": "33%"}, 
+            "important_entities": [{"entity_type": "event", "text": "Super"}, {"entity_type": "event", "text": "Super"}],
             "text": "hello."
         })
