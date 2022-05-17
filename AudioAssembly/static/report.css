@@ -64,23 +64,9 @@ body {
   font-size: 48px;
 }
 
-.list {
-  display: flex;
-  flex-direction: column;
-  margin-top: 15px;
-  margin-left: 100px;
-}
-
 .data {
   color: rgb(160, 102, 215);
   font-size: 48px;
-  font-weight: bold;
-}
-
-.element {
-  color: rgb(160, 102, 215);
-  font-size: 48px;
-  margin-bottom: 15px;
   font-weight: bold;
 }
 
@@ -109,32 +95,33 @@ body {
     position: absolute;
     margin-left: auto;
     margin-right: auto;
-    top: 655px;
+    top: 637px;
     left: 0;
     right: 0;
     text-align: center;
   }
 
   .text,
-  .element,
   .data,
   .metric {
-    font-size: 36px;
+    font-size: 32px;
   }
 
   .label {
     font-size: 16px;
   }
 
-  .element {
+  .metric-container {
+    width: 100%;
+  }
+
+  .metric-subcontainer {
     margin-left: 0;
     text-align: start;
   }
 
-  .list,
   .metrics,
-  .text,
-  .metric-subcontainer {
+  .text {
     margin-left: 0;
     text-align: center;
   }
@@ -163,10 +150,10 @@ body {
     font-size: 36px;
     text-align: center;
   }
+}
 
-  .text {
-    font-size: 24px;
-    padding-left: 0;
-    text-align: center;
+@media only screen and (max-width: 361px) {
+  .neutral {
+    top: 658px;
   }
 }
